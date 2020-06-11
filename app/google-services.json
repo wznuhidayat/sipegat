@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "422462650265",
+    "firebase_url": "https://sipegat-b85e2.firebaseio.com",
+    "project_id": "sipegat-b85e2",
+    "storage_bucket": "sipegat-b85e2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:422462650265:android:df3da94f9421162a04c508",
+        "android_client_info": {
+          "package_name": "dacas.official.sipegat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "422462650265-2o8vc93eh7h6cqho9vahaj22g4innm26.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dacas.official.sipegat",
+            "certificate_hash": "c336bb82c33ee41a37c701f3148e70fecf8103fe"
+          }
+        },
+        {
+          "client_id": "422462650265-4kktpnlve153m39vv8c6348c4euoo7tk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoa-4mLNIKb3TniW4Pe0wtvGJWYuG249c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "422462650265-4kktpnlve153m39vv8c6348c4euoo7tk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

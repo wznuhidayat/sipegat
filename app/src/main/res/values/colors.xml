@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color  name="colorWhite">#fff</color>
+<!--    custom color-->
+    <color name="OrangePrimary">#FB770D</color>
+    <color name="OrangeSoft">#FFA45B</color>
+    <color name="ColorSoft">#FFEBDB</color>
+    <color name="ColorDark">#25424C</color>
+</resources>
