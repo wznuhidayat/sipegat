@@ -72,13 +72,12 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Password must be more than 8 digit",Toast.LENGTH_LONG).show();
                 }
                 else {
-
                     mAuth.createUserWithEmailAndPassword(email,pass)
                             .addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
-                                        FirebaseUser user = mAuth.getCurrentUser();
+//                                        FirebaseUser user = mAuth.getCurrentUser();
                                         Toast.makeText(SignUpActivity.this, "Authentication Success.",
                                                 Toast.LENGTH_SHORT).show();
 //                                        UserID = mAuth.getCurrentUser().getUid();
