@@ -32,7 +32,7 @@ public class SignUpActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private EditText FullName,InputEmail,InputPassword,InputPassConf;
     private Button btnSignUp;
-//    FirebaseFirestore fstore;
+    FirebaseFirestore fstore;
     String UserID;
     @Override
 
@@ -46,7 +46,7 @@ public class SignUpActivity extends AppCompatActivity {
         InputPassword = findViewById(R.id.InputPassword);
         InputPassConf = findViewById(R.id.InputPassConf);
         btnSignUp = findViewById(R.id.btnSignUp);
-
+//        UserID = mAuth.getCurrentUser().getUid();
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,9 +62,9 @@ public class SignUpActivity extends AppCompatActivity {
                 if(TextUtils.isEmpty(pass)){
                     Toast.makeText(getApplicationContext(),"Please enter your Password",Toast.LENGTH_LONG).show();
                 }
-                if(pass != passConf){
-                    Toast.makeText(getApplicationContext(),"passwords do not match",Toast.LENGTH_LONG).show();
-                }
+//                if(pass = passConf){
+//                    Toast.makeText(getApplicationContext(),"passwords do not match",Toast.LENGTH_LONG).show();
+//                }
                 if (pass.length() == 0){
                     Toast.makeText(getApplicationContext(),"Please enter your Password",Toast.LENGTH_LONG).show();
                 }
@@ -77,20 +77,20 @@ public class SignUpActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
-//                                        FirebaseUser user = mAuth.getCurrentUser();
+                                        FirebaseUser user = mAuth.getCurrentUser();
                                         Toast.makeText(SignUpActivity.this, "Authentication Success.",
                                                 Toast.LENGTH_SHORT).show();
-//                                        UserID = mAuth.getCurrentUser().getUid();
-//                                        DocumentReference documentReference = fstore.collection("user").document(UserID);
-//                                        Map<String,Object> usr = new HashMap<>();
-//                                        usr.put("fullname",fullname);
-//                                        usr.put("email",email);
-//                                        documentReference.set(usr).addOnSuccessListener(new OnSuccessListener<Void>() {
-//                                            @Override
-//                                            public void onSuccess(Void aVoid) {
-//                                                Log.d(TAG, "onSuccess:User is Created for "+UserID);
-//                                            }
-//                                        });
+                                        UserID = mAuth.getCurrentUser().getUid();
+                                        DocumentReference documentReference = fstore.collection("user").document(UserID);
+                                        Map<String,Object> usr = new HashMap<>();
+                                        usr.put("fullname",fullname);
+                                        usr.put("email",email);
+                                        documentReference.set(usr).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                Log.d(TAG, "onSuccess:User is Created for "+UserID);
+                                            }
+                                        });
                                         Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
                                         startActivity(intent);
                                     } else {
