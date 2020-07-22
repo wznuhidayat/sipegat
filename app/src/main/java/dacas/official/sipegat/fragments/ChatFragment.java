@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -106,8 +107,8 @@ public class ChatFragment extends Fragment {
     protected int[] mDataset3;
 
     int [] imageProfile = {R.drawable.noimage, R.drawable.noimage,R.drawable.noimage};
-    String [] nameUser = {"Kampus Koding","Kampus Koding","Kampus Koding"};
-    String [] Description = {"belajar programming","belajar programming","belajar programming"};
+    String [] nameUser = {"User","User","User"};
+    String [] Description = {"Hello","Hello","Hello"};
 
 
 
@@ -164,5 +165,14 @@ public class ChatFragment extends Fragment {
             mDataset3[i] = imageProfile[i];
         }
     }
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
+    }
 }

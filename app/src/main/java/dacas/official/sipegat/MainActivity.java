@@ -26,6 +26,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import dacas.official.sipegat.fragments.ChatFragment;
 import dacas.official.sipegat.fragments.HomeFragment;
 import dacas.official.sipegat.fragments.ProfileFragment;
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -45,6 +46,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                .setDefaultFontPath("fonts/Montserrat-SemiBold.ttf")
+                .setFontAttrId(R.attr.fontPath)
+                .build());
         setContentView(R.layout.activity_main);
         auth = FirebaseAuth.getInstance();
         Toolbar toolbar = findViewById(R.id.toolbar);

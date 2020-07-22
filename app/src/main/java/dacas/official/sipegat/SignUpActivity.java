@@ -31,7 +31,7 @@ public class SignUpActivity extends AppCompatActivity {
     private static final String TAG = "SignUpActivity";
     private FirebaseAuth mAuth;
     private EditText FullName,InputEmail,InputPassword,InputPassConf;
-    private Button btnSignUp;
+    private Button btnSignUp, btnSignIn;
     FirebaseFirestore fstore;
     String UserID;
     @Override
@@ -109,6 +109,13 @@ public class SignUpActivity extends AppCompatActivity {
             }
 
         });
+        btnSignIn = findViewById(R.id.btnToSignIn);
+        btnSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SignUpActivity.this, SignInActivity.class));
+            }
+        });
 
     }
     @Override
@@ -118,9 +125,5 @@ public class SignUpActivity extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
     }
 
-    public void toSignIn(View v){
-        Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
-        startActivity(intent);
-    }
 
 }

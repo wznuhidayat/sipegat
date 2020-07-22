@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 
 import androidx.annotation.NonNull;
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,7 +34,7 @@ public class HomeFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     private FirebaseAuth auth;
     private static final String TAG = "Home Fragment";
-
+    NestedScrollView nested_scrool_view;
     //firebase
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
@@ -103,7 +104,8 @@ public class HomeFragment extends Fragment {
 
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
-
+//        nested_scrool_view = rootView.findViewById(R.id.nestedscroll);
+//        nested_scrool_view.smoothScrollTo(0,0); //set it on top
         mLayoutManager  = new GridLayoutManager(getActivity(),2);
         mRecyclerView.setLayoutManager(mLayoutManager);
 

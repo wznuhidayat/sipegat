@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
@@ -103,8 +104,15 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
         if(mAuthStateListener != null){
             FirebaseAuth.getInstance().removeAuthStateListener(mAuthStateListener);
         }
     }
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
+    }
+
 }
