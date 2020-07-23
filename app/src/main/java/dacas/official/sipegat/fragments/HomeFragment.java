@@ -17,29 +17,42 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.firebase.auth.FirebaseAuth;
 
 import com.google.firebase.auth.FirebaseUser;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.List;
+
 import dacas.official.sipegat.R;
 import dacas.official.sipegat.SignInActivity;
 import dacas.official.sipegat.adapter.GridAdapter;
+import dacas.official.sipegat.model.Product;
 
 public class HomeFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private static final String JSON_URL = "http://192.168.0.7/sipegat/product/getData";
     private FirebaseAuth auth;
     private static final String TAG = "Home Fragment";
     NestedScrollView nested_scrool_view;
     //firebase
     private FirebaseAuth.AuthStateListener mAuthStateListener;
+    private List<Product> ProductItemList;
 
-    //widgets
-    private Button mSignOut;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -108,12 +121,56 @@ public class HomeFragment extends Fragment {
 //        nested_scrool_view.smoothScrollTo(0,0); //set it on top
         mLayoutManager  = new GridLayoutManager(getActivity(),2);
         mRecyclerView.setLayoutManager(mLayoutManager);
-
+//        LoadProduct();
         mAdapter = new GridAdapter();
         mRecyclerView.setAdapter(mAdapter);
         return rootView;
 
     }
+
+//    private void LoadProduct() {
+//        StringRequest stringRequest = new StringRequest(Request.Method.GET, JSON_URL,
+//                new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//
+//                        try {
+//                            JSONObject obj = new JSONObject(response);
+//                            JSONArray playerArray = obj.getJSONArray("Product");
+//
+//                            for (int i = 0; i < playerArray.length(); i++) {
+//
+//                                JSONObject playerObject = playerArray.getJSONObject(i);
+//
+//
+//                                Product playerItem = new Product(playerObject.getString("no"),
+//                                        playerObject.getString("name"),
+//                                        playerObject.getString("price"),
+//                                        playerObject.getString("img"));
+//
+//                                ProductItemList.add(playerItem);
+//                            }
+//
+//                            ListViewAdapter adapter = new ListViewAdapter(ProductItemList, getActivity().getApplicationContext());
+//
+//                            listView.setAdapter(adapter);
+//
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        Toast.makeText(getActivity().getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+//                    }
+//                });000
+//
+//        RequestQueue requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
+//        requestQueue.add(stringRequest);
+//    }
+
     private void setupFirebaseListener(){
         Log.d(TAG, "setupFirebaseListener: setting up the auth state listener.");
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {

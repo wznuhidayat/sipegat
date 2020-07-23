@@ -43,6 +43,7 @@
         android:layout_marginHorizontal="20dp"
         >
         <androidx.cardview.widget.CardView
+            android:id="@+id/btnToSchedule"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"

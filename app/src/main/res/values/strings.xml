@@ -54,7 +54,7 @@
         <item>December</item>
     </string-array>
     <string name="title_activity_welcome">Home Screen</string>
-<!--    <string name="next">LANJUT</string>-->
+    <!--    <string name="next">LANJUT</string>-->
     <string name="skip">Skip</string>
     <string name="start">Start</string>
 
@@ -69,4 +69,8 @@
 
     <string name="slide_4_title">GUIDE</string>
     <string name="slide_4_desc">Cari Guide Untuk Menemani Perjalananmu Agar  semakin asyik </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_schedule">ScheduleActivity</string>
 </resources>

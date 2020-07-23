@@ -21,32 +21,32 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.ViewHolder> {
         super();
         mItems = new ArrayList<Product>();
         Product nama = new Product();
-        nama.setProductName("Product 1");
-        nama.setImageProduct(R.drawable.noimage);
+        nama.setProductName("Russell Chambers");
+        nama.setImageProduct(R.drawable.russel);
         nama.setPrice(20000);
         mItems.add(nama);
 
         nama = new Product();
-        nama.setProductName("Product 1");
-        nama.setImageProduct(R.drawable.noimage);
+        nama.setProductName("Theodore Henderson");
+        nama.setImageProduct(R.drawable.henderson);
         nama.setPrice(20000);
         mItems.add(nama);
 
         nama = new Product();
-        nama.setProductName("Product 1");
-        nama.setImageProduct(R.drawable.noimage);
+        nama.setProductName("Samantha Willis");
+        nama.setImageProduct(R.drawable.samantha);
         nama.setPrice(20000);
         mItems.add(nama);
 
         nama = new Product();
-        nama.setProductName("Product 1");
-        nama.setImageProduct(R.drawable.noimage);
+        nama.setProductName("Abigail Hanson");
+        nama.setImageProduct(R.drawable.abigail);
         nama.setPrice(20000);
         mItems.add(nama);
 
         nama = new Product();
-        nama.setProductName("Product 1");
-        nama.setImageProduct(R.drawable.noimage);
+        nama.setProductName("Kenzi Turner");
+        nama.setImageProduct(R.drawable.kenzi);
         nama.setPrice(20000);
         mItems.add(nama);
 
