@@ -45,7 +45,7 @@ public class HomeFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private static final String JSON_URL = "http://192.168.0.7/sipegat/product/getData";
+    private static final String JSON_URL = "http://192.168.0.5/sipegat/product/getData";
     private FirebaseAuth auth;
     private static final String TAG = "Home Fragment";
     NestedScrollView nested_scrool_view;
@@ -121,55 +121,53 @@ public class HomeFragment extends Fragment {
 //        nested_scrool_view.smoothScrollTo(0,0); //set it on top
         mLayoutManager  = new GridLayoutManager(getActivity(),2);
         mRecyclerView.setLayoutManager(mLayoutManager);
-//        LoadProduct();
-        mAdapter = new GridAdapter();
-        mRecyclerView.setAdapter(mAdapter);
+        LoadProduct();
+//        mAdapter = new GridAdapter(getActivity().ProductIt);
+//        mRecyclerView.setAdapter(mAdapter);
         return rootView;
 
     }
 
-//    private void LoadProduct() {
-//        StringRequest stringRequest = new StringRequest(Request.Method.GET, JSON_URL,
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//
-//                        try {
-//                            JSONObject obj = new JSONObject(response);
-//                            JSONArray playerArray = obj.getJSONArray("Product");
-//
-//                            for (int i = 0; i < playerArray.length(); i++) {
-//
-//                                JSONObject playerObject = playerArray.getJSONObject(i);
-//
-//
-//                                Product playerItem = new Product(playerObject.getString("no"),
-//                                        playerObject.getString("name"),
-//                                        playerObject.getString("price"),
-//                                        playerObject.getString("img"));
-//
-//                                ProductItemList.add(playerItem);
-//                            }
-//
-//                            ListViewAdapter adapter = new ListViewAdapter(ProductItemList, getActivity().getApplicationContext());
-//
-//                            listView.setAdapter(adapter);
-//
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        Toast.makeText(getActivity().getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-//                    }
-//                });000
-//
-//        RequestQueue requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
-//        requestQueue.add(stringRequest);
-//    }
+    private void LoadProduct() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, JSON_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            JSONObject obj = new JSONObject(response);
+                            JSONArray products = obj.getJSONArray("Product");
+
+                            for (int i = 0; i < products.length(); i++) {
+
+                                JSONObject productObject = products.getJSONObject(i);
+                                String kode = productObject.getString("kode_product");
+                                String name = productObject.getString("name");
+                                int price = productObject.getInt("price");
+                                String img = productObject.getString("img");
+                                Product product = new Product(kode,name,price,img);
+                                ProductItemList.add(product);
+                            }
+
+                            GridAdapter adapter = new GridAdapter( getActivity().getApplicationContext(),ProductItemList);
+
+                            mRecyclerView.setAdapter(adapter);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getActivity().getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
+        requestQueue.add(stringRequest);
+    }
 
     private void setupFirebaseListener(){
         Log.d(TAG, "setupFirebaseListener: setting up the auth state listener.");

@@ -1,10 +1,12 @@
 package dacas.official.sipegat.adapter;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import dacas.official.sipegat.R;
@@ -14,77 +16,49 @@ import dacas.official.sipegat.model.Product;
 import java.util.ArrayList;
 import java.util.List;
 public class GridAdapter extends RecyclerView.Adapter<GridAdapter.ViewHolder> {
-
+    Context mCtx;
     List<Product> mItems;
 
-    public GridAdapter() {
-        super();
-        mItems = new ArrayList<Product>();
-        Product nama = new Product();
-        nama.setProductName("Russell Chambers");
-        nama.setImageProduct(R.drawable.russel);
-        nama.setPrice(20000);
-        mItems.add(nama);
+    public GridAdapter(Context mCtx, List<Product> mItems) {
+//        super();
+        this.mCtx = mCtx;
+        this.mItems = mItems;
+    }
 
-        nama = new Product();
-        nama.setProductName("Theodore Henderson");
-        nama.setImageProduct(R.drawable.henderson);
-        nama.setPrice(20000);
-        mItems.add(nama);
-
-        nama = new Product();
-        nama.setProductName("Samantha Willis");
-        nama.setImageProduct(R.drawable.samantha);
-        nama.setPrice(20000);
-        mItems.add(nama);
-
-        nama = new Product();
-        nama.setProductName("Abigail Hanson");
-        nama.setImageProduct(R.drawable.abigail);
-        nama.setPrice(20000);
-        mItems.add(nama);
-
-        nama = new Product();
-        nama.setProductName("Kenzi Turner");
-        nama.setImageProduct(R.drawable.kenzi);
-        nama.setPrice(20000);
-        mItems.add(nama);
-
-
-
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(mCtx);
+        View view = inflater.inflate(R.layout.grid_view, null);
+        ViewHolder holder = new ViewHolder(view);
+        return holder;
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.grid_view, viewGroup, false);
-        ViewHolder viewHolder = new ViewHolder(v);
-        return viewHolder;
-    }
-
-    @Override
-    public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        Product nature = mItems.get(i);
-        viewHolder.tvspecies.setText(nature.getProductName());
-        viewHolder.imgThumbnail.setImageResource(nature.getImageProduct());
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Product product = mItems.get(position);
+//        holder.imgThumbnail.setImageDrawable(mCtx.getResources().getDrawable(product.getImageProduct()));
+        holder.tvspecies.setText(product.getProductName());
+        holder.tvprice.setText(String.valueOf(product.getPrice()));
     }
 
     @Override
     public int getItemCount() {
-
         return mItems.size();
     }
+
 
     class ViewHolder extends RecyclerView.ViewHolder  {
 
 
         public ImageView imgThumbnail;
-        public TextView tvspecies;
+        public TextView tvspecies,tvprice;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            imgThumbnail = (ImageView)itemView.findViewById(R.id.images);
+//            imgThumbnail = (ImageView)itemView.findViewById(R.id.images);
             tvspecies = (TextView)itemView.findViewById(R.id.nameProduct);
+            tvprice = (TextView)itemView.findViewById(R.id.price);
 
         }
     }
