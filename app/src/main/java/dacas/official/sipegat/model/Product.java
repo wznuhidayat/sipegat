@@ -1,9 +1,20 @@
 package dacas.official.sipegat.model;
 
 public class Product {
-    private String productName;
+    private String productName,DescProduct;
     private int imageProduct;
-    private double price;
+    private int price;
+
+
+    public Product(String productName, int price,String desc) {
+        this.productName = productName;
+        this.price = price;
+        this.DescProduct = desc;
+    }
+
+    public Product() {
+
+    }
 
     public String getProductName() {
         return productName;
@@ -22,11 +33,23 @@ public class Product {
         this.imageProduct = imageProduct;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
+    }
+
+    public String getDescProduct() {
+        return DescProduct;
+    }
+
+    public void setDescProduct(String descProduct) {
+        DescProduct = descProduct;
+    }
+    @Override
+    public String toString(){
+        return " "+productName+"\n"+" "+price+"\n"+" "+DescProduct;
     }
 }

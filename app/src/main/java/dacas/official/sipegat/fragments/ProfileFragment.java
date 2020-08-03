@@ -14,11 +14,13 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import dacas.official.sipegat.R;
 import dacas.official.sipegat.SignInActivity;
+import dacas.official.sipegat.add_product;
 
 
 public class ProfileFragment extends Fragment {
@@ -83,6 +85,14 @@ public class ProfileFragment extends Fragment {
             public void onClick(View v) {
                 openFragment(Schedule.newInstance("", ""));
 
+            }
+        });
+        FloatingActionButton myFab = (FloatingActionButton) rootView.findViewById(R.id.fabToAdd);
+        myFab.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), add_product.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
             }
         });
         return rootView;
